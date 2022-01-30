@@ -22,7 +22,7 @@ const Post: React.FC<Props> = ({ title, content, username }) => {
                 <div className={PST.allContent}>
                     <div className={PST.contentUser}>
                         <img className={PST.avatar} src="https://i.imgur.com/JUVFPMN.png" alt="" />
-                        <div className={PST.name}>@{username}</div>
+                        <div className={PST.name}>{username}</div>
                     </div>
                     <span className={PST.content}>{content}</span>
                 </div>
