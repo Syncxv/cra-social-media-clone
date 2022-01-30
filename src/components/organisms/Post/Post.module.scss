@@ -1,0 +1,41 @@
+.post {
+    position: relative;
+    .user {
+        display: flex;
+        align-items: center;
+        padding: .2rem;
+        padding-right: 1rem;
+        margin: 2rem 0;
+        background-color: #f5f7f9;
+        gap: 0.2rem;
+        width: fit-content;
+        border-radius: 40px;
+        .name {
+            font-size: 0.975rem;
+            color: #5b5b5c
+        }
+    }
+    .allContent {
+        position: absolute;
+        bottom: 0;
+        padding: 2.5rem 1.5rem;
+        width: 100%;
+        color: white;
+        text-shadow: 0 0 1px rgba(black, 0.3);
+        background: linear-gradient(hsl(0 0% 50% / 0), hsl(0 0% 0% / 0.7) );
+        .name {
+            font-weight: 400;
+        }
+        .contentUser {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+    }
+}
+
+.avatar {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
