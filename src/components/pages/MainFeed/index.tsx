@@ -1,9 +1,9 @@
-import MF from "./MainFeed.module.scss";
+import MF from './MainFeed.module.scss'
 
-import React from "react";
-import Post from "../../organisms/Post";
+import React from 'react'
+import Post from '../../organisms/Post'
 
-type Props = {};
+type Props = {}
 
 const MainFeed: React.FC<Props> = () => {
     return (
@@ -15,11 +15,36 @@ const MainFeed: React.FC<Props> = () => {
                         content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
                         username="bruh"
                     />
+                    <Post
+                        title="a nice title"
+                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
+                        username="bruh"
+                    />
+                    <Post
+                        title="a nice title"
+                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
+                        username="bruh"
+                    />
+                    <Post
+                        title="a nice title"
+                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
+                        username="bruh"
+                    />
+                    <Post
+                        title="a nice title"
+                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
+                        username="bruh"
+                    />
+                    <Post
+                        title="a nice title"
+                        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, laudantium."
+                        username="bruh"
+                    />
                 </main>
                 <aside>sidebaridk man</aside>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default MainFeed;
+export default MainFeed

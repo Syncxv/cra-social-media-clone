@@ -18,7 +18,7 @@ const Post: React.FC<Props> = ({ title, content, username }) => {
                     <button className={PST.actionButton}>
                         <div className={PST.icon}>{icon}</div>
                     </button>
-                    {likes && <span className={PST.likes}>{likes}</span>}
+                    {likes && <p className={PST.likes}>{likes}</p>}
                 </div>
             </>
         )
@@ -26,7 +26,6 @@ const Post: React.FC<Props> = ({ title, content, username }) => {
     return (
         <>
             <div className={PST.post}>
-                <UserPill username="bruh" />
                 <div className={PST.postImage}>
                     <img src="https://i.imgur.com/Lte0y2v.jpeg" alt="" />
                 </div>
