@@ -1,0 +1,21 @@
+.user {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem;
+    padding-right: 1rem;
+    margin: 2rem 0;
+    background-color: #f5f7f9;
+    gap: 0.7rem;
+    width: fit-content;
+    border-radius: 40px;
+    .name {
+        font-size: 0.975rem;
+        color: #5b5b5c;
+    }
+}
+
+.avatar {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
