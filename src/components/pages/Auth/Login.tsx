@@ -1,7 +1,9 @@
 import { gql, useMutation } from '@apollo/client'
 import { Question, WarningCircle } from 'phosphor-react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHref, useNavigate } from 'react-router-dom'
+
+import { userStore } from '../../../stores/userStore'
 import { Fields, FieldError, LoginResponse } from '../../../types'
 import { validate } from '../../../utils/validate'
 import LS from './Auth.module.scss'
@@ -53,9 +55,14 @@ const Login: React.FC<Props> = ({}) => {
     const [submitLogin] = useMutation(LOGIN_MUTATION, {
         onCompleted: ({ userLogin: res }: LoginResponse) => {
             console.log(res)
-            setErrors(res.errors)
+            if (res.errors !== null) return setErrors(res.errors)
+            localStorage.setItem('token', res.accessToken)
+            setUser(res.user)
+            navigate('/')
         }
     })
+    const setUser = userStore(state => state.setUser)
+    const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState<FieldError[] | null>(null)

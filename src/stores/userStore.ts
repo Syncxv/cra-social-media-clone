@@ -3,6 +3,7 @@ import { UserType } from '../types'
 
 interface UserStoreHehe {
     user: UserType | null
+    setUser: (user: UserType) => void
 }
 
 export const userStore = create<UserStoreHehe>(set => ({
