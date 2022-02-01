@@ -11,6 +11,23 @@
         .inputWrapper {
             display: flex;
             flex-direction: column;
+            &__iconWrapper {
+                position: relative;
+            }
+            &__icon {
+                position: absolute;
+                opacity: 0;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+            }
+            &__errors {
+                display: flex;
+                flex-direction: column;
+            }
+            &__error {
+                opacity: 1;
+            }
             &__label {
                 font-size: 1.1rem;
             }
