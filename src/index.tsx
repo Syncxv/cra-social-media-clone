@@ -5,15 +5,27 @@ import App from './App'
 import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink } from '@apollo/client'
 import { createUploadLink } from 'apollo-upload-client'
 import { BrowserRouter } from 'react-router-dom'
-const client = new ApolloClient({
-    link: createUploadLink({
-        uri: 'http://localhost:8000/graphql',
-        fetch,
+import { setContext } from '@apollo/client/link/context'
+
+const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const token = localStorage.getItem('token')
+    // return the headers to the context so httpLink can read them
+    return {
         headers: {
-            authorization: localStorage.getItem('token') || null
+            ...headers,
+            authorization: token ? `Bearer ${token}` : ''
         }
-        // fetchOptions: { credentials: 'include' }
-    }),
+    }
+})
+const uploadLink = createUploadLink({
+    uri: 'http://localhost:8000/graphql',
+    fetch
+    // fetchOptions: { credentials: 'include' }
+})
+
+const client = new ApolloClient({
+    link: authLink.concat(uploadLink),
     uri: 'http://localhost:8000/graphql',
     cache: new InMemoryCache()
 })
