@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Fields, FieldError } from '../../../types'
+import { Fields, FieldError, RegisterResponse } from '../../../types'
 import { validate } from '../../../utils/validate'
 import LS from './Auth.module.scss'
 import { Input } from './Login'
@@ -26,13 +26,20 @@ const REGISTER_MUTATION = gql`
 `
 
 const Register: React.FC<Props> = ({}) => {
+    const [submitRegister] = useMutation(REGISTER_MUTATION, {
+        onCompleted: ({ userRegister: res }: RegisterResponse) => {
+            console.log(res)
+            setErrors(res.errors)
+        }
+    })
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [errors, setErrors] = useState<FieldError[] | null>(null)
     const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(username, password, email)
+        if (errors !== null) return
+        submitRegister({ variables: { options: { username, password, email } } })
     }
     return (
         <div className={LS.authWrapper}>

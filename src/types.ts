@@ -23,18 +23,23 @@ export interface FieldError extends Errors {
 export interface LoginResponse {
     userLogin: {
         errors: FieldError[]
-        user: {
-            _id: string
-            username: string
-            email: string
-            avatar: null
-            __typename: string
-        }
+        user: UserResponse
         accessToken: string
         __typename: string
     }
 }
 
+export interface RegisterResponse {
+    userRegister: {
+        errors: FieldError[]
+        user: UserResponse
+        accessToken: string
+        __typename: string
+    }
+}
+export interface UserResponse extends UserType {
+    __typename: string
+}
 export enum Fields {
     USERNAME = 'username',
     PASSWORD = 'password',

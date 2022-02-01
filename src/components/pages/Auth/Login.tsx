@@ -31,7 +31,6 @@ export const Input: React.FC<{ label: string; onChange: any; type: string; error
     type,
     errors
 }) => {
-    console.log(errors)
     return (
         <div className={LS.inputWrapper}>
             <label className={LS.inputWrapper__label} htmlFor={label}>
