@@ -17,7 +17,7 @@ export interface Errors {
 }
 
 export interface FieldError extends Errors {
-    feild: Feilds
+    field: Fields
 }
 
 export interface LoginResponse {
@@ -35,7 +35,7 @@ export interface LoginResponse {
     }
 }
 
-export enum Feilds {
+export enum Fields {
     USERNAME = 'username',
     PASSWORD = 'password',
     EMAIL = 'email',

@@ -2,7 +2,7 @@ import { gql, useMutation } from '@apollo/client'
 import { Question, WarningCircle } from 'phosphor-react'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Feilds, FieldError, LoginResponse } from '../../../types'
+import { Fields, FieldError, LoginResponse } from '../../../types'
 import { validate } from '../../../utils/validate'
 import LS from './Auth.module.scss'
 interface Props {}
@@ -31,6 +31,7 @@ export const Input: React.FC<{ label: string; onChange: any; type: string; error
     type,
     errors
 }) => {
+    console.log(errors)
     return (
         <div className={LS.inputWrapper}>
             <label className={LS.inputWrapper__label} htmlFor={label}>
@@ -53,6 +54,7 @@ const Login: React.FC<Props> = ({}) => {
     const [submitLogin] = useMutation(LOGIN_MUTATION, {
         onCompleted: ({ userLogin: res }: LoginResponse) => {
             console.log(res)
+            setErrors(res.errors)
         }
     })
     const [username, setUsername] = useState('')
@@ -70,21 +72,21 @@ const Login: React.FC<Props> = ({}) => {
                     label="Username"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setUsername(e.target.value)
-                        const errors = validate(e.target.value, Feilds.USERNAME)
+                        const errors = validate(e.target.value, Fields.USERNAME)
                         setErrors(errors)
                     }}
                     type="text"
-                    errors={errors?.filter(s => s.feild === Feilds.USERNAME) ?? []}
+                    errors={errors?.filter(s => s.field === Fields.USERNAME) ?? []}
                 />
                 <Input
                     label="Password"
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setPassword(e.target.value)
-                        const errors = validate(e.target.value, Feilds.PASSWORD)
+                        const errors = validate(e.target.value, Fields.PASSWORD)
                         setErrors(errors)
                     }}
                     type="password"
-                    errors={errors?.filter(s => s.feild === Feilds.PASSWORD) ?? []}
+                    errors={errors?.filter(s => s.field === Fields.PASSWORD) ?? []}
                 />
                 <button className="w-full" type="submit">
                     Login
