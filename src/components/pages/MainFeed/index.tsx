@@ -2,12 +2,14 @@ import MF from './MainFeed.module.scss'
 
 import React from 'react'
 import Post from '../../organisms/Post'
+import Header from '../../templates/Header'
 
 type Props = {}
 
 const MainFeed: React.FC<Props> = () => {
     return (
         <>
+            <Header />
             <div className={MF.app}>
                 <main className={MF.feed}>
                     <Post

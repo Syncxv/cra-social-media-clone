@@ -1,6 +1,5 @@
 import { ChatDots, Heart, PaperPlaneTilt } from 'phosphor-react'
 import React from 'react'
-import UserPill from '../../molecules/UserPill'
 
 import PST from './Post.module.scss'
 
@@ -10,7 +9,7 @@ interface Props {
     username: string
 }
 
-const Post: React.FC<Props> = ({ title, content, username }) => {
+const Post: React.FC<Props> = ({ content, username }) => {
     const PostButton: React.FC<{ icon: any; likes?: number }> = ({ icon, likes }) => {
         return (
             <>
