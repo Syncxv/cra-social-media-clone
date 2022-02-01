@@ -20,7 +20,7 @@ export const validate = (str: string, feild: Feilds): FieldError[] | null => {
             }
             break
         case Feilds.USERNAME:
-            if (!(str.length < 3)) {
+            if (str.length < 3) {
                 return [
                     {
                         feild,
