@@ -4,12 +4,11 @@
     .feed {
         display: flex;
         flex-direction: column;
-        gap: 4rem;
         max-width: 33%;
         padding: 4rem 0 0 0;
         min-width: 50%;
         min-height: 100vh;
-        border: 1px solid hsl(0 0% 0% / 0.7);
+        border: 1px solid var(--border-color);
         border-top: none;
     }
 }

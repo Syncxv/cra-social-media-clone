@@ -93,8 +93,8 @@
     gap: 0.4rem;
     width: 100%;
     padding: 0.4rem 0.5rem;
-    border-bottom: 1px solid hsl(0 0% 0% / 0.7);
-    border-top: 1px solid hsl(0 0% 0% / 0.7);
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
     &__avatar {
         & > img {
             width: 48px;

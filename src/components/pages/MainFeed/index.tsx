@@ -44,10 +44,9 @@ const MainFeed: React.FC<Props> = () => {
             <Header />
             <div className={MF.app}>
                 <main className={MF.feed}>
-                    {/* {data?.getPosts.map(post => (
-                        <Post post={post} />
-                    ))} */}
-                    <PostNoAttachment post={data!.getPosts[0]} />
+                    {data?.getPosts.map(post =>
+                        post.attachment ? <Post post={post} /> : <PostNoAttachment post={post} />
+                    )}
                 </main>
                 <aside>sidebaridk man</aside>
             </div>
