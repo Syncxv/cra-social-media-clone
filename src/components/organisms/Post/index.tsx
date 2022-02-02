@@ -1,15 +1,14 @@
 import { ChatDots, Heart, PaperPlaneTilt } from 'phosphor-react'
 import React from 'react'
+import { deafultPfp, PostType } from '../../../types'
 
 import PST from './Post.module.scss'
 
 interface Props {
-    title: string
-    content: string
-    username: string
+    post: PostType
 }
 
-const Post: React.FC<Props> = ({ content, username }) => {
+const Post: React.FC<Props> = ({ post }) => {
     const PostButton: React.FC<{ icon: any; likes?: number }> = ({ icon, likes }) => {
         return (
             <>
@@ -26,7 +25,7 @@ const Post: React.FC<Props> = ({ content, username }) => {
         <>
             <div className={PST.post}>
                 <div className={PST.postImage}>
-                    <img src="https://i.imgur.com/Lte0y2v.jpeg" alt="" />
+                    <img src={post.attachment || deafultPfp} alt="" />
                 </div>
                 <div className={PST.actions}>
                     <PostButton icon={<Heart color="white" size={32} />} likes={20} />
@@ -35,10 +34,10 @@ const Post: React.FC<Props> = ({ content, username }) => {
                 </div>
                 <div className={PST.allContent}>
                     <div className={PST.contentUser}>
-                        <img className={PST.avatar} src="https://i.imgur.com/JUVFPMN.png" alt="" />
-                        <div className={PST.name}>{username}</div>
+                        <img className={PST.avatar} src={post.owner.avatar || deafultPfp} alt="" />
+                        <div className={PST.name}>{post.owner.username}</div>
                     </div>
-                    <span className={PST.content}>{content}</span>
+                    <span className={PST.content}>{post.content}</span>
                 </div>
             </div>
         </>
