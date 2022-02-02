@@ -18,6 +18,7 @@
         color: white;
         text-align: center;
         transform: translateY(-100%);
+        pointer-events: none;
     }
     &:hover {
         --opacity: 1;
@@ -42,7 +43,7 @@
         color: white;
         text-align: center;
         opacity: var(--opacity);
-
+        pointer-events: none;
         transform: translateY(-50%) translateX(-100%);
     }
     &:hover {
