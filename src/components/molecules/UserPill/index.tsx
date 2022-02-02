@@ -1,15 +1,16 @@
 import React from 'react'
+import { deafultPfp, UserType } from '../../../types'
 import UP from './UserPill.module.scss'
 
 interface Props {
-    username: string
+    user: UserType
 }
 
-const UserPill: React.FC<Props> = ({ username }) => {
+const UserPill: React.FC<Props> = ({ user }) => {
     return (
         <div className={UP.user}>
-            <img className={UP.avatar} src="https://i.imgur.com/JUVFPMN.png" alt="" />
-            <div className={UP.name}>@{username}</div>
+            <img className={UP.avatar} src={user.avatar || deafultPfp} alt="" />
+            <div className={UP.name}>@{user.username}</div>
         </div>
     )
 }
