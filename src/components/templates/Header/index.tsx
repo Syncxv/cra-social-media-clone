@@ -2,6 +2,7 @@ import { gql, useMutation } from '@apollo/client'
 import { PlusCircle } from 'phosphor-react'
 import React from 'react'
 import { modalStore } from '../../../stores/modalStore'
+import CreatePostModal from '../../organisms/CreatePostModal'
 import Modal from '../../organisms/Modal'
 
 import HS from './Header.module.scss'
@@ -14,20 +15,12 @@ const UPLOAD_MUTATION = gql`
     }
 `
 
-const testModal: React.FC = () => {
-    return (
-        <Modal size={{ height: '30rem', width: '14rem' }}>
-            <Modal.Content>HEEEY</Modal.Content>
-        </Modal>
-    )
-}
-
 const HeaderItem: React.FC<{ tooltip: string }> = ({ children, tooltip }) => {
     return (
         <li
             onClick={() => {
                 var store = modalStore.getState()
-                store.push(testModal)
+                store.push(CreatePostModal)
                 console.log(store)
             }}
             className={`${HS.header__linkItem} tooltipLeft`}
