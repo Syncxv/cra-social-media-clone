@@ -46,3 +46,21 @@ export enum Fields {
     EMAIL = 'email',
     UNKOWN = 'unkown'
 }
+
+export interface CommentType {
+    _id: string
+    content: string
+    likes: number
+    author: UserType
+}
+
+export interface PostType {
+    _id: string
+    title: string
+    content: string
+    attachment?: string
+    owner: UserType
+    comments: CommentType[]
+}
+
+export const deafultPfp = 'https://i.imgur.com/JUVFPMN.png'
