@@ -6,6 +6,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink } from '@apollo
 import { createUploadLink } from 'apollo-upload-client'
 import { BrowserRouter } from 'react-router-dom'
 import { setContext } from '@apollo/client/link/context'
+import ModalLayer from './components/organisms/Modal/ModalLayer'
 
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
@@ -34,6 +35,7 @@ ReactDOM.render(
         <BrowserRouter>
             <ApolloProvider client={client}>
                 <App />
+                <ModalLayer />
             </ApolloProvider>
         </BrowserRouter>
         W
