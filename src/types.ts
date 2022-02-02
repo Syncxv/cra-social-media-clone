@@ -59,6 +59,7 @@ export interface PostType {
     title: string
     content: string
     attachment?: string
+    likes: number
     owner: UserType
     comments: CommentType[]
 }

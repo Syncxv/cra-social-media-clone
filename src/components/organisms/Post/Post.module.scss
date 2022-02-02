@@ -86,3 +86,68 @@
         z-index: 0;
     }
 }
+
+.postTextOnly {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 1px solid hsl(0 0% 0% / 0.7);
+    border-top: 1px solid hsl(0 0% 0% / 0.7);
+    &__avatar {
+        & > img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+    }
+    &__contentWrapper {
+        display: flex;
+        gap: 1rem;
+        .userInfo {
+            .username {
+                font-weight: 600;
+            }
+        }
+    }
+    &__actions {
+        display: flex;
+        justify-content: space-around;
+        margin: 0.8rem 0;
+    }
+}
+
+.actionButton {
+    --opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    .icon {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        &::before,
+        &::after {
+            opacity: 0;
+            transition: 300ms ease;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            opacity: 0.2;
+            background-color: var(--color);
+            transform: scale(1.9);
+            opacity: var(--opacity);
+        }
+    }
+    &:hover {
+        color: var(--color);
+        --opacity: 0.1;
+    }
+}
