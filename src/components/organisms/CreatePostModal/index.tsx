@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { userStore } from '../../../stores/userStore'
 import UserPill from '../../molecules/UserPill'
 import Modal from '../Modal'
 import PM from './PostModal.module.scss'
@@ -26,11 +27,14 @@ const CreatePostModal: React.FC = () => {
     const [createPost] = useMutation(CREATE_POST_MUTATION, {
         onCompleted: res => console.log(res)
     })
+    const user = userStore(state => state.user)
     const [image, setImage] = useState<File | null>(null)
-    const [caption, setCaption] = useState('')
+    const captionRef = useRef<HTMLTextAreaElement | null>(null)
 
     const handleSubmit = () => {
-        createPost({ variables: { createPostOptions2: { content: caption, title: 'gewgw' }, image } })
+        createPost({
+            variables: { createPostOptions2: { content: captionRef.current!.value, title: 'gewgw' }, image }
+        })
     }
     return (
         <Modal size={{ height: '55rem', width: '55rem' }}>
@@ -59,12 +63,8 @@ const CreatePostModal: React.FC = () => {
                     />
                 </div>
                 <div className={PM.captionWrapper}>
-                    <UserPill username="hehe" />
-                    <textarea
-                        onChange={e => setCaption(e.target.value)}
-                        className={PM.textarea}
-                        placeholder="Caption"
-                    />
+                    <UserPill user={user!} />
+                    <textarea ref={captionRef} className={PM.textarea} placeholder="Caption" />
                 </div>
             </div>
         </Modal>
