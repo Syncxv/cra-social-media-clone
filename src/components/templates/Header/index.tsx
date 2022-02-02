@@ -16,7 +16,7 @@ const UPLOAD_MUTATION = gql`
 
 const testModal: React.FC = () => {
     return (
-        <Modal>
+        <Modal size={{ height: '30rem', width: '14rem' }}>
             <Modal.Content>HEEEY</Modal.Content>
         </Modal>
     )

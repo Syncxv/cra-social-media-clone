@@ -1,8 +1,12 @@
 import modalSizes from './sizes.module.scss'
 import { Backdrop } from './Backdrop'
 import MS from './Modal.module.scss'
+interface CustomSize {
+    height: string
+    width: string
+}
 interface ModalProps {
-    size?: string
+    size?: string | CustomSize
 }
 export const ModalSizes = {
     Small: modalSizes.sizeSmall,
@@ -16,11 +20,20 @@ type modalWrapper<P = {}> = React.FC<P> & {
     Sizes: typeof ModalSizes
 }
 const Modal: modalWrapper<ModalProps> = ({ children, size = ModalSizes.Small }) => {
+    const isCustomSize = typeof size === 'object'
+    const sizeObject: React.CSSProperties = isCustomSize
+        ? {
+              minHeight: (size as CustomSize).height,
+              width: (size as CustomSize).width
+          }
+        : {}
     return (
         <>
             <Backdrop>
                 <div onClick={e => e.stopPropagation()} className={MS.modalOuter}>
-                    <div className={`${MS.modal} ${size}`}>{children}</div>
+                    <div className={`${MS.modal} ${typeof size === 'object' ? '' : size}`} style={sizeObject}>
+                        {children}
+                    </div>
                 </div>
             </Backdrop>
         </>
