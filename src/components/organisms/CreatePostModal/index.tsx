@@ -1,6 +1,7 @@
 import { gql, useMutation } from '@apollo/client'
 import { useRef, useState } from 'react'
 import { userStore } from '../../../stores/userStore'
+import { FieldError, Fields, PostType } from '../../../types'
 import UserPill from '../../molecules/UserPill'
 import Modal from '../Modal'
 import PM from './PostModal.module.scss'
@@ -24,14 +25,17 @@ const CREATE_POST_MUTATION = gql`
 `
 
 const CreatePostModal: React.FC = () => {
-    const [createPost] = useMutation(CREATE_POST_MUTATION, {
-        onCompleted: res => console.log(res)
+    const [createPost] = useMutation<{ createPost: PostType }>(CREATE_POST_MUTATION, {
+        onCompleted: res => {}
     })
+    const [errors, setErrors] = useState<FieldError[]>([])
     const user = userStore(state => state.user)
     const [image, setImage] = useState<File | null>(null)
     const captionRef = useRef<HTMLTextAreaElement | null>(null)
 
     const handleSubmit = () => {
+        if (!captionRef.current!.value)
+            return setErrors([{ field: Fields.CAPTION, message: 'ayo you need to add a caption :|' }])
         createPost({
             variables: { createPostOptions2: { content: captionRef.current!.value, title: 'gewgw' }, image }
         })
@@ -64,7 +68,13 @@ const CreatePostModal: React.FC = () => {
                 </div>
                 <div className={PM.captionWrapper}>
                     <UserPill user={user!} />
-                    <textarea ref={captionRef} className={PM.textarea} placeholder="Caption" />
+                    <textarea
+                        onChange={() => setErrors([])}
+                        ref={captionRef}
+                        className={PM.textarea}
+                        placeholder="Caption"
+                    />
+                    {errors.length !== 0 && errors.map(s => <div key={Date.now()}>{s.message}</div>)}
                 </div>
             </div>
         </Modal>

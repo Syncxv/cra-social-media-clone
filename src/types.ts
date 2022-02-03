@@ -44,6 +44,7 @@ export enum Fields {
     USERNAME = 'username',
     PASSWORD = 'password',
     EMAIL = 'email',
+    CAPTION = 'caption',
     UNKOWN = 'unkown'
 }
 
