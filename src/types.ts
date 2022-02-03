@@ -61,6 +61,7 @@ export interface PostType {
     content: string
     attachment?: string
     likes: number
+    likedUsers: string[]
     owner: UserType
     comments: CommentType[]
 }
