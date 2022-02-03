@@ -20,8 +20,7 @@ const authLink = setContext((_, { headers }) => {
     }
 })
 const uploadLink = createUploadLink({
-    uri: 'http://localhost:8000/graphql',
-    fetch
+    uri: 'http://localhost:8000/graphql'
     // fetchOptions: { credentials: 'include' }
 })
 
