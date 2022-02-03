@@ -1,47 +1,35 @@
-import { ChatDots, Heart, PaperPlaneTilt } from 'phosphor-react'
-import React from 'react'
 import { deafultPfp, PostType } from '../../../types'
-
+import Divider from '../../atoms/Divider'
+import Actions from './Actions'
 import PST from './Post.module.scss'
 
-interface Props {
+type Props = {
     post: PostType
 }
 
-const Post: React.FC<Props> = ({ post }) => {
-    const PostButton: React.FC<{ icon: any; likes?: number }> = ({ icon, likes }) => {
-        return (
-            <>
-                <div className={PST.actionButtonWrapper}>
-                    <button className={PST.actionButton}>
-                        <div className={PST.icon}>{icon}</div>
-                    </button>
-                    {likes && <p className={PST.likes}>{likes}</p>}
-                </div>
-            </>
-        )
-    }
+const PostV2: React.FC<Props> = ({ post }) => {
     return (
         <>
-            <div className={PST.post}>
-                <div className={PST.postImage}>
-                    <img src={post.attachment || deafultPfp} alt="" />
+            <Divider hidden={true} margin={0.5} />
+            <article className={PST.postv2}>
+                <div className={PST.avatarWrapper}>
+                    <img className={PST.avatar} src={post.owner.avatar || deafultPfp} alt="" />
                 </div>
-                <div className={PST.actions}>
-                    <PostButton icon={<Heart color="white" size={32} />} likes={20} />
-                    <PostButton icon={<ChatDots color="white" size={32} />} likes={20} />
-                    <PostButton icon={<PaperPlaneTilt color="white" size={32} />} />
-                </div>
-                <div className={PST.allContent}>
-                    <div className={PST.contentUser}>
-                        <img className={PST.avatar} src={post.owner.avatar || deafultPfp} alt="" />
-                        <div className={PST.name}>{post.owner.username}</div>
+                <div className={PST.content}>
+                    <div className={PST.owner}>
+                        {/*TODO: ok ima add display name to the backend AND THEN change below to owner.displayName hehe but not rn */}
+                        <h4>{post.owner.username}</h4>
+                        <span>@{post.owner.username}</span>
                     </div>
-                    <span className={PST.content}>{post.content}</span>
+                    <div>{post.content}</div>
+                    <div className={PST.attachmentWrapper}>
+                        {post.attachment && <img className={PST.attachemnt} src={post.attachment} alt="" />}
+                    </div>
+                    <Actions post={post} />
                 </div>
-            </div>
+            </article>
         </>
     )
 }
 
-export default Post
+export default PostV2

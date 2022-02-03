@@ -2,6 +2,7 @@ import { Chat, Heart } from 'phosphor-react'
 import React, { CSSProperties } from 'react'
 import { userStore } from '../../../stores/userStore'
 import { deafultPfp, PostType } from '../../../types'
+import Actions from './Actions'
 import PST from './Post.module.scss'
 
 type Props = {
@@ -9,18 +10,6 @@ type Props = {
 }
 
 const PostNoAttachment: React.FC<Props> = ({ post }) => {
-    const ActionButton: React.FC<{ Icon: any; amount?: number; color: string }> = ({
-        Icon,
-        amount,
-        color
-    }) => {
-        return (
-            <div style={{ '--color': color } as CSSProperties} className={PST.actionButton}>
-                <div className={PST.icon}>{<Icon size={20} />}</div>
-                {amount && <div className={PST.amount}>{amount}</div>}
-            </div>
-        )
-    }
     return (
         <>
             <div className={PST.postTextOnly}>
@@ -35,14 +24,7 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
                         <div className={PST.postTextOnly__text}>{post.content}</div>
                     </div>
                 </div>
-                <div className={PST.postTextOnly__actions}>
-                    <ActionButton color="rgb(255, 19, 97)" amount={post.likes} Icon={Heart}></ActionButton>
-                    <ActionButton
-                        color="rgb(19, 255, 58)"
-                        amount={post.comments.length}
-                        Icon={Chat}
-                    ></ActionButton>
-                </div>
+                <Actions post={post} />
             </div>
         </>
     )
