@@ -16,7 +16,7 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
     }) => {
         return (
             <div style={{ '--color': color } as CSSProperties} className={PST.actionButton}>
-                <div className={PST.icon}>{<Icon size={24} />}</div>
+                <div className={PST.icon}>{<Icon size={20} />}</div>
                 {amount && <div className={PST.amount}>{amount}</div>}
             </div>
         )
