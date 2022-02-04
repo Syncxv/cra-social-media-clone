@@ -51,17 +51,16 @@ interface ActionProps {
 const Actions: React.FC<ActionProps> = ({ post }) => {
     const client = useApolloClient()
     const user = userStore(state => state.user)
-    const forceUpdate = useForceUpdate()
+    const [isLiked, setLiked] = useState(post.likedUsers.includes(user!._id))
     const handleLike = async () => {
         const data = await client.mutate<{ likePost: { post: PostType } }>({
             mutation: LIKE_MUTATION,
             variables: { likePostPostId2: post._id }
         })
-        console.log(data)
-        console.log(data.data?.likePost.post.likedUsers)
-        forceUpdate()
+        console.log(data.data!.likePost.post.likedUsers.includes(user!._id))
+        setLiked(data.data!.likePost.post.likedUsers.includes(user!._id))
     }
-    const isLiked = post.likedUsers.includes(user!._id)
+
     return (
         <>
             <div className={PST.actionsBro}>
