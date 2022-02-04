@@ -7,7 +7,7 @@ import Modal from '../Modal'
 import PM from './PostModal.module.scss'
 
 const CREATE_POST_MUTATION = gql`
-    mutation CreatePost($createPostOptions2: CreatePostArgs!, $image: Upload!) {
+    mutation CreatePost($createPostOptions2: CreatePostArgs!, $image: Upload) {
         createPost(options: $createPostOptions2, image: $image) {
             _id
             title
