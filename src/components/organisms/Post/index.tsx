@@ -14,9 +14,7 @@ const PostV2: React.FC<Props> = ({ post }) => {
         <>
             <Divider hidden={true} margin={0.5} />
             <article
-                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-                    console.log((e.target as HTMLDivElement).tagName)
-                }}
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => naviagtor(`/post/${post._id}`)}
                 className={PST.postv2}
             >
                 <div className={PST.avatarWrapper}>
