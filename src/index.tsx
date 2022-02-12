@@ -24,7 +24,7 @@ const uploadLink = createUploadLink({
     // fetchOptions: { credentials: 'include' }
 })
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
     link: ApolloLink.from([authLink, uploadLink]),
     uri: 'http://localhost:8000/graphql',
     cache: new InMemoryCache()
