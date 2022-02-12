@@ -31,7 +31,7 @@ const PostV2: React.FC<Props> = ({ post }) => {
                         {post.attachment && <img className={PST.attachemnt} src={post.attachment} alt="" />}
                     </div>
                     <div onClick={e => e.stopPropagation()}>
-                        <Actions post={post} />
+                        <Actions moreInfo={false} post={post} />
                     </div>
                 </div>
             </article>

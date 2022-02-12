@@ -103,18 +103,8 @@ const PostInfo: React.FC<Props> = ({}) => {
                         </div>
                     )}
                 </div>
-                <div className={PI.numbers}>
-                    <div className={PI.thingy}>
-                        <div className={PI.number}>{currentPost.likedUsers.length}</div>
-                        <div className={PI.label}>Likes</div>
-                    </div>
-                    <div className={PI.thingy}>
-                        <div className={PI.number}>{currentPost.comments.length}</div>
-                        <div className={PI.label}>Reply</div>
-                    </div>
-                </div>
                 <Divider margin={0.8} />
-                <Actions post={currentPost} />
+                <Actions moreInfo={true} post={currentPost} />
                 <Divider margin={0.5} />
             </div>
         </>

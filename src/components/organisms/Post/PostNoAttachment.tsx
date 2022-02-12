@@ -25,7 +25,7 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
                     </div>
                     <div>{post.content}</div>
                     <div onClick={e => e.stopPropagation()}>
-                        <Actions post={post} />
+                        <Actions moreInfo={false} post={post} />
                     </div>
                 </div>
             </article>
