@@ -37,7 +37,6 @@ ReactDOM.render(
                 <ModalLayer />
             </ApolloProvider>
         </BrowserRouter>
-        W
     </React.StrictMode>,
     document.getElementById('root')
 )
