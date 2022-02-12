@@ -24,7 +24,9 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
                         <span>@{post.owner.username}</span>
                     </div>
                     <div>{post.content}</div>
-                    <Actions post={post} />
+                    <div onClick={e => e.stopPropagation()}>
+                        <Actions post={post} />
+                    </div>
                 </div>
             </article>
         </>

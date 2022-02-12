@@ -13,7 +13,12 @@ const PostV2: React.FC<Props> = ({ post }) => {
     return (
         <>
             <Divider hidden={true} margin={0.5} />
-            <article onClick={() => naviagtor(`/post/${post._id}`)} className={PST.postv2}>
+            <article
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                    console.log((e.target as HTMLDivElement).tagName)
+                }}
+                className={PST.postv2}
+            >
                 <div className={PST.avatarWrapper}>
                     <img className={PST.avatar} src={post.owner.avatar || deafultPfp} alt="" />
                 </div>
@@ -27,7 +32,9 @@ const PostV2: React.FC<Props> = ({ post }) => {
                     <div className={PST.attachmentWrapper}>
                         {post.attachment && <img className={PST.attachemnt} src={post.attachment} alt="" />}
                     </div>
-                    <Actions post={post} />
+                    <div onClick={e => e.stopPropagation()}>
+                        <Actions post={post} />
+                    </div>
                 </div>
             </article>
         </>
