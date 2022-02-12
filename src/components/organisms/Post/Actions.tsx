@@ -46,7 +46,7 @@ interface ActionProps {
     moreInfo: boolean
 }
 
-const Actions: React.FC<ActionProps> = ({ post }) => {
+const Actions: React.FC<ActionProps> = ({ post, moreInfo }) => {
     const client = useApolloClient()
     const user = userStore(state => state.user)
     const [isLiked, setLiked] = useState(user ? post.likedUsers.includes(user!._id) : false)
@@ -64,16 +64,18 @@ const Actions: React.FC<ActionProps> = ({ post }) => {
 
     return (
         <>
-            <div className={PI.numbers}>
-                <div className={PI.thingy}>
-                    <div className={PI.number}>{likes}</div>
-                    <div className={PI.label}>Likes</div>
+            {moreInfo && (
+                <div className={PI.numbers}>
+                    <div className={PI.thingy}>
+                        <div className={PI.number}>{likes}</div>
+                        <div className={PI.label}>Likes</div>
+                    </div>
+                    <div className={PI.thingy}>
+                        <div className={PI.number}>{post.comments.length}</div>
+                        <div className={PI.label}>Reply</div>
+                    </div>
                 </div>
-                <div className={PI.thingy}>
-                    <div className={PI.number}>{post.comments.length}</div>
-                    <div className={PI.label}>Reply</div>
-                </div>
-            </div>
+            )}
             <div className={PST.actionsBro}>
                 <ActionButton
                     onClick={handleLike}
