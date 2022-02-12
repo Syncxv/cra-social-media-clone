@@ -1,0 +1,73 @@
+.dropdown {
+    position: absolute;
+    width: 16rem;
+    background-color: var(--background-primary);
+    bottom: 4.5rem;
+    border-radius: 10px;
+    box-shadow: -1px -1px 11px 0px #00000052;
+    color: var(--flushed);
+    .dropdownItem {
+        display: flex;
+        align-items: center;
+        padding: 0.4rem 1rem;
+        border-radius: 2px;
+        font-size: 0.92rem;
+        cursor: pointer;
+        .rightIcon {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .leftIcon {
+            display: flex;
+            align-items: center;
+            margin: 0px 0.4rem;
+        }
+        &:hover {
+            background-color: var(--secondary-hover);
+        }
+    }
+}
+
+.sidebarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: 0.5rem;
+    &:hover {
+        background-color: var(--secondary-hover);
+    }
+    .contentWrapper {
+        display: flex;
+        gap: 0.6rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3.2rem;
+            width: 3.2rem;
+            background-color: var(--brand);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .text {
+            .heading2 {
+                color: black;
+                font-weight: 500;
+                font-size: 1rem;
+            }
+            .smolText {
+                color: rgba(0, 0, 0, 0.582);
+                font-size: 0.8rem;
+            }
+        }
+    }
+    .CaretDownThing {
+        color: rgba(0, 0, 0, 0.582);
+        cursor: pointer;
+        margin-right: 1rem;
+    }
+}
