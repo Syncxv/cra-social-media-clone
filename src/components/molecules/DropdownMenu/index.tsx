@@ -23,7 +23,7 @@ interface DropdownProps {
     user: UserType
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ children }) => {
+const Dropdown: React.FC<DropdownProps> = ({ children, user }) => {
     return (
         <div className={DM.dropdown}>
             <div className={DM.sidebarHeader}>
@@ -32,7 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({ children }) => {
                         <span className={DM.logoIcon}>b</span>
                     </div>
                     <div className={DM.text}>
-                        <h2 className={DM.heading2}>Creatovis</h2>
+                        <h2 className={DM.heading2}>{user.username}</h2>
                         <p className={DM.smolText}>A LOT OF TEXT IDK MAN</p>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import Header from '../../templates/Header'
 import { gql, useQuery } from '@apollo/client'
 import { PostType } from '../../../types'
 import PostNoAttachment from '../../organisms/Post/PostNoAttachment'
+import Sidebar from '../../organisms/Sidebar'
 
 type Props = {}
 
@@ -44,6 +45,7 @@ const MainFeed: React.FC<Props> = () => {
         <>
             <Header />
             <div className={MF.app}>
+                <Sidebar />
                 <main className={MF.feed}>
                     {data?.getPosts.map(post =>
                         post.attachment ? (
@@ -53,7 +55,6 @@ const MainFeed: React.FC<Props> = () => {
                         )
                     )}
                 </main>
-                <aside>sidebaridk man</aside>
             </div>
         </>
     )
