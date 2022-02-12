@@ -1,9 +1,7 @@
 import React from 'react'
 
 import DM from './DropdownMenu.module.scss'
-import { Car } from 'phosphor-react'
 import Divider from '../../atoms/Divider'
-import SidebarHeader from '../../organisms/Sidebar/SidebarHeader'
 
 interface DropdownItemProps {
     leftIcon?: any
