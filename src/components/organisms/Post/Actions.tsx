@@ -48,13 +48,16 @@ const Actions: React.FC<ActionProps> = ({ post }) => {
     const client = useApolloClient()
     const user = userStore(state => state.user)
     const [isLiked, setLiked] = useState(user ? post.likedUsers.includes(user!._id) : false)
+    const [likes, setLikes] = useState(post.likedUsers.length)
     const handleLike = async () => {
         const { data } = await client.mutate<{ likePost: { post: PostType } }>({
             mutation: LIKE_MUTATION,
             variables: { likePostPostId2: post._id }
         })
-        console.log(data!.likePost.post.likedUsers.includes(user!._id))
-        setLiked(data!.likePost.post.likedUsers.includes(user!._id))
+        const resIsLiked = data!.likePost.post.likedUsers.includes(user!._id)
+        console.log(resIsLiked)
+        setLiked(resIsLiked)
+        setLikes(prev => (resIsLiked ? prev + 1 : prev - 1))
     }
 
     return (
@@ -63,7 +66,7 @@ const Actions: React.FC<ActionProps> = ({ post }) => {
                 <ActionButton
                     onClick={handleLike}
                     color="rgb(255, 19, 97)"
-                    amount={post.likedUsers.length}
+                    amount={likes}
                     active={isLiked}
                     Icon={Heart}
                 ></ActionButton>
