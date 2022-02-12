@@ -1,5 +1,5 @@
 import { Chat, Heart, Share } from 'phosphor-react'
-import { CSSProperties, useState } from 'react'
+import { CSSProperties, memo, useState } from 'react'
 import { PostType } from '../../../types'
 import PST from './Post.module.scss'
 import { gql, useApolloClient } from '@apollo/client'
@@ -29,7 +29,7 @@ export const ActionButton: React.FC<{
     color: string
     onClick: any
     active: boolean
-}> = ({ Icon, amount, color, onClick, active }) => {
+}> = memo(({ Icon, amount, color, onClick, active }) => {
     return (
         <div onClick={onClick} style={{ '--color': color } as CSSProperties} className={PST.actionButton}>
             <div className={PST.icon}>
@@ -38,7 +38,7 @@ export const ActionButton: React.FC<{
             {amount && <div className={PST.amount}>{amount}</div>}
         </div>
     )
-}
+})
 
 interface ActionProps {
     post: PostType
