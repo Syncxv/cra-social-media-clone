@@ -41,7 +41,7 @@ const Sidebar: React.FC<Props> = () => {
                 <div>
                     <SideButton Icon={DotsThree} title="More" dropdown={false} />
                     <Divider margin={0.5} />
-                    <ProfileFooter user={user} />
+                    {user && <ProfileFooter user={user} />}
                 </div>
             </aside>
         </>

@@ -19,7 +19,7 @@ const SidebarHeader: React.FC<Props> = ({ user }) => {
                     </div>
                     <div className={HeaderStyles.text}>
                         <h2 className={HeaderStyles.heading2}>Social Meida Idk Man</h2>
-                        <p className={HeaderStyles.smolText}>{`@${user.username}`}</p>
+                        {user && <p className={HeaderStyles.smolText}>{`@${user.username}`}</p>}
                     </div>
                 </div>
                 {/* <CaretDown className={HeaderStyles.CaretDownThing} size={18} /> */}
