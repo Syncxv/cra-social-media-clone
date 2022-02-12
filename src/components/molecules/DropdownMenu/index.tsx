@@ -2,6 +2,7 @@ import React from 'react'
 
 import DM from './DropdownMenu.module.scss'
 import Divider from '../../atoms/Divider'
+import { UserType } from '../../../types'
 
 interface DropdownItemProps {
     leftIcon?: any
@@ -18,7 +19,9 @@ export const DropdownItem: React.FC<DropdownItemProps> = ({ children, leftIcon, 
     )
 }
 
-interface DropdownProps {}
+interface DropdownProps {
+    user: UserType
+}
 
 const Dropdown: React.FC<DropdownProps> = ({ children }) => {
     return (
