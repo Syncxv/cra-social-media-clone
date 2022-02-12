@@ -41,7 +41,7 @@ const CreatePostModal: React.FC = () => {
         })
     }
     return (
-        <Modal size={{ height: '55rem', width: '55rem' }}>
+        <Modal size={{ height: '75vh', width: '55vw' }}>
             <Modal.Header>
                 <div className={PM.header}>
                     <h2 className={PM.header__createPost}>Create Post</h2>
