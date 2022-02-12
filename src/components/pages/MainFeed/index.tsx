@@ -9,7 +9,7 @@ import PostNoAttachment from '../../organisms/Post/PostNoAttachment'
 
 type Props = {}
 
-const GET_POSTS_QUERY = gql`
+export const GET_POSTS_QUERY = gql`
     query GetPosts {
         getPosts {
             _id

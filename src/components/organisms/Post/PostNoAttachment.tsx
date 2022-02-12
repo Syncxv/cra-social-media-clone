@@ -1,5 +1,6 @@
 import { Chat, Heart } from 'phosphor-react'
 import React, { CSSProperties } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { userStore } from '../../../stores/userStore'
 import { deafultPfp, PostType } from '../../../types'
 import Actions from './Actions'
@@ -10,9 +11,10 @@ type Props = {
 }
 
 const PostNoAttachment: React.FC<Props> = ({ post }) => {
+    const naviagtor = useNavigate()
     return (
         <>
-            <div className={PST.postTextOnly}>
+            <article onClick={() => naviagtor(`/post/${post._id}`)} className={PST.postTextOnly}>
                 <div className={PST.postTextOnly__contentWrapper}>
                     <div className={PST.postTextOnly__avatar}>
                         <img src={post.owner.avatar || deafultPfp} alt="" />
@@ -25,7 +27,7 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
                     </div>
                 </div>
                 <Actions post={post} />
-            </div>
+            </article>
         </>
     )
 }

@@ -23,10 +23,6 @@ const LIKE_MUTATION = gql`
         }
     }
 `
-function useForceUpdate() {
-    const [value, setValue] = useState(0) // integer state
-    return () => setValue(value => value + 1) // update the state to force render
-}
 export const ActionButton: React.FC<{
     Icon: any
     amount?: number
@@ -53,12 +49,12 @@ const Actions: React.FC<ActionProps> = ({ post }) => {
     const user = userStore(state => state.user)
     const [isLiked, setLiked] = useState(post.likedUsers.includes(user!._id))
     const handleLike = async () => {
-        const data = await client.mutate<{ likePost: { post: PostType } }>({
+        const { data } = await client.mutate<{ likePost: { post: PostType } }>({
             mutation: LIKE_MUTATION,
             variables: { likePostPostId2: post._id }
         })
-        console.log(data.data!.likePost.post.likedUsers.includes(user!._id))
-        setLiked(data.data!.likePost.post.likedUsers.includes(user!._id))
+        console.log(data!.likePost.post.likedUsers.includes(user!._id))
+        setLiked(data!.likePost.post.likedUsers.includes(user!._id))
     }
 
     return (
@@ -73,7 +69,7 @@ const Actions: React.FC<ActionProps> = ({ post }) => {
                 ></ActionButton>
                 <ActionButton
                     onClick={() => console.log('hehe')}
-                    color="rgb(19, 255, 58)"
+                    color="rgb(35, 19, 255)"
                     amount={post.comments.length}
                     active={false}
                     Icon={Chat}

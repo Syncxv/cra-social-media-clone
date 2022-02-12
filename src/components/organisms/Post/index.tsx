@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { deafultPfp, PostType } from '../../../types'
 import Divider from '../../atoms/Divider'
 import Actions from './Actions'
@@ -8,10 +9,11 @@ type Props = {
 }
 
 const PostV2: React.FC<Props> = ({ post }) => {
+    const naviagtor = useNavigate()
     return (
         <>
             <Divider hidden={true} margin={0.5} />
-            <article className={PST.postv2}>
+            <article onClick={() => naviagtor(`/post/${post._id}`)} className={PST.postv2}>
                 <div className={PST.avatarWrapper}>
                     <img className={PST.avatar} src={post.owner.avatar || deafultPfp} alt="" />
                 </div>

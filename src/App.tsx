@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import AuthMiddleware from './auth/AuthMiddlewareComponent'
+import PostInfo from './components/organisms/Post/PostInfo'
 import Login from './components/pages/Auth/Login'
 import Register from './components/pages/Auth/Register'
 import MainFeed from './components/pages/MainFeed'
@@ -9,6 +10,7 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/post/:id" element={<PostInfo />} />
 
             <Route
                 path="/"
