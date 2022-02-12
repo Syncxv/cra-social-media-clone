@@ -1,7 +1,8 @@
 import { gql, useApolloClient } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { PostType } from '../../../../types'
+import { deafultPfp, PostType } from '../../../../types'
+import Divider from '../../../atoms/Divider'
 import { GET_POSTS_QUERY } from '../../../pages/MainFeed'
 import PI from './PostInfo.module.scss'
 
@@ -82,7 +83,26 @@ const PostInfo: React.FC<Props> = ({}) => {
     if (!currentPost) return <div>WHICH POST IS THAT EH</div>
     return (
         <>
-            <div>{currentPost.content}</div>
+            <div className={PI.expandedPost}>
+                <div className={PI.user}>
+                    <div className={PI.avatar}>
+                        <img className={PI.img} src={currentPost.owner.avatar || deafultPfp} alt="" />
+                    </div>
+                    <div className={PI.nameWrapper}>
+                        <div className={PI.name}>{currentPost.owner.username}</div>
+                        <div className={PI.displayName}>@{currentPost.owner.username}</div>
+                    </div>
+                </div>
+                <div className={PI.content}>
+                    <div className={PI.text}>{currentPost.content}</div>
+                    <Divider hidden={true} margin={0.5} />
+                    {currentPost.attachment && (
+                        <div className={PI.attachmentWrapper}>
+                            <img src={currentPost.attachment} alt="" />
+                        </div>
+                    )}
+                </div>
+            </div>
         </>
     )
 }

@@ -1,0 +1,27 @@
+.expandedPost {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    .user {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.6rem;
+        .avatar {
+            .img {
+                height: 48px;
+                width: 48px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .content {
+        .text {
+            font-size: 1.4rem;
+        }
+        .attachmentWrapper {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+    }
+}
