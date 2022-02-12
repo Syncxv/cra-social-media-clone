@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    position: sticky;
+    top: 0;
     overflow-y: hidden;
     height: 100%;
     width: 25rem;
