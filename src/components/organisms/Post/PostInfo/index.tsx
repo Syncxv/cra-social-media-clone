@@ -54,6 +54,7 @@ export const useGetPostData = (id: string): getPostDataReturnType => {
         if (cachedData) {
             setLoading(false)
             setData(cachedData.getPosts.find(s => s._id === id))
+            return
         }
         client
             .query<{ getPost: PostType }>({
