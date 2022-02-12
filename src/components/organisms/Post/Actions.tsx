@@ -47,7 +47,7 @@ interface ActionProps {
 const Actions: React.FC<ActionProps> = ({ post }) => {
     const client = useApolloClient()
     const user = userStore(state => state.user)
-    const [isLiked, setLiked] = useState(post.likedUsers.includes(user!._id))
+    const [isLiked, setLiked] = useState(user ? post.likedUsers.includes(user!._id) : false)
     const handleLike = async () => {
         const { data } = await client.mutate<{ likePost: { post: PostType } }>({
             mutation: LIKE_MUTATION,
