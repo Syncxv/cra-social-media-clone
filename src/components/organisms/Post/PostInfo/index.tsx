@@ -5,6 +5,7 @@ import { deafultPfp, PostType } from '../../../../types'
 import Divider from '../../../atoms/Divider'
 import { GET_POSTS_QUERY } from '../../../pages/MainFeed'
 import Actions from '../Actions'
+import { Comment } from '../Comment'
 import PI from './PostInfo.module.scss'
 
 interface Props {}
@@ -115,6 +116,9 @@ const PostInfo: React.FC<Props> = ({}) => {
                 <Actions moreInfo={true} post={currentPost} />
                 <Divider margin={0.5} />
             </div>
+            {currentPost.comments.length &&
+                currentPost.comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+            <Divider hidden={true} marginBottom={10} />
         </>
     )
 }
