@@ -26,13 +26,13 @@ const LOGIN_MUTATION = gql`
         }
     }
 `
-
-export const Input: React.FC<{ label: string; onChange: any; type: string; errors: FieldError[] }> = ({
-    label,
-    onChange,
-    type,
-    errors
-}) => {
+interface InputProps {
+    label: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => any
+    type: string
+    errors: FieldError[]
+}
+export const Input: React.FC<InputProps> = ({ label, onChange, type, errors }) => {
     return (
         <div className={LS.inputWrapper}>
             <label className={LS.inputWrapper__label} htmlFor={label}>
