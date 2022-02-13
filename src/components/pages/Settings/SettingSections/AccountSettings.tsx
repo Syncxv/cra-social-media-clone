@@ -1,9 +1,14 @@
 import React from 'react'
+import SideElement from '../components/SideElement'
 
 type Props = {}
 
 export const AccountSettings: React.FC<Props> = () => {
-    return <div>AccountSettings</div>
+    return (
+        <SideElement>
+            <div>AccountSettings</div>
+        </SideElement>
+    )
 }
 
 export default {

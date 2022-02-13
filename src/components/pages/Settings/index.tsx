@@ -1,4 +1,6 @@
+import { XCircle } from 'phosphor-react'
 import React, { useState } from 'react'
+import { layerStore } from '../../../stores/layerStore'
 import { Layer } from '../../organisms/Layer'
 import { SidebarButton } from './components/SidebarButton'
 import SS from './Settings.module.scss'
@@ -6,6 +8,7 @@ import SidebarItems from './SettingSections'
 type Props = {}
 const Settings: React.FC<Props> = () => {
     const [page, setPage] = useState(SidebarItems[0])
+    const layer = layerStore(state => state)
     return (
         <>
             <Layer>
@@ -17,8 +20,9 @@ const Settings: React.FC<Props> = () => {
                             </SidebarButton>
                         ))}
                     </aside>
-                    <main>
+                    <main className={SS.main}>
                         <page.element />
+                        <XCircle size={32} onClick={() => layer.pop()} />
                     </main>
                 </div>
             </Layer>

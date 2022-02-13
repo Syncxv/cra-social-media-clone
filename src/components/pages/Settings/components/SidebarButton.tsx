@@ -9,7 +9,7 @@ interface Props {
 
 export const SidebarButton: React.FC<Props> = ({ children, selected, onClick }) => {
     return (
-        <div onClick={onClick} className={`${bruh.sidebarBtn}, ${selected ? bruh.select : ''}`}>
+        <div onClick={onClick} className={`${bruh.sidebarBtn} ${selected ? bruh.select : ''}`}>
             <span className={bruh.label}>{children}</span>
         </div>
     )
