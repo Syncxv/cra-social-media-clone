@@ -15,6 +15,7 @@ export const ME_QUERY = gql`
             _id
             email
             username
+            displayName
             avatar
             followers {
                 _id

@@ -6,6 +6,7 @@ export interface Follower {
 export interface UserType {
     _id: string
     username: string
+    displayName: string
     email: string
     avatar: string
     followers: Follower[]
