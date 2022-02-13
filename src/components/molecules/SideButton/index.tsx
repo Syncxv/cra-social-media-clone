@@ -9,12 +9,13 @@ interface Props {
     title: string
     letter?: string
     dropdown: boolean
+    onClick?: (e: React.MouseEvent<HTMLDivElement>) => any
 }
 
-const SideButton: React.FC<Props> = ({ Icon, title, letter, dropdown }) => {
+const SideButton: React.FC<Props> = ({ Icon, title, letter, dropdown, onClick = () => {} }) => {
     return (
         <>
-            <div className={SB.sideButton}>
+            <div onClick={onClick} className={SB.sideButton}>
                 <div className={SB.sideButtonInner}>
                     <Icon className={SB.icon} size={28} />
                     <div className={SB.text}>{title}</div>

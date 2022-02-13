@@ -1,5 +1,6 @@
 import { gql, useMutation } from '@apollo/client'
 import { useRef, useState } from 'react'
+import { modalStore } from '../../../stores/modalStore'
 import { userStore } from '../../../stores/userStore'
 import { FieldError, Fields, PostType } from '../../../types'
 import UserPill from '../../molecules/UserPill'
@@ -26,10 +27,11 @@ const CREATE_POST_MUTATION = gql`
 
 const CreatePostModal: React.FC = () => {
     const [createPost] = useMutation<{ createPost: PostType }>(CREATE_POST_MUTATION, {
-        onCompleted: res => {}
+        onCompleted: res => console.log(res)
     })
     const [errors, setErrors] = useState<FieldError[]>([])
     const user = userStore(state => state.user)
+    const storeModal = modalStore(state => state)
     const [image, setImage] = useState<File | null>(null)
     const captionRef = useRef<HTMLTextAreaElement | null>(null)
 
@@ -39,6 +41,7 @@ const CreatePostModal: React.FC = () => {
         createPost({
             variables: { createPostOptions2: { content: captionRef.current!.value, title: 'gewgw' }, image }
         })
+        storeModal.pop()
     }
     return (
         <Modal size={{ height: '75vh', width: '55vw' }}>

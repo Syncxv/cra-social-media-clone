@@ -7,6 +7,7 @@ import { createUploadLink } from 'apollo-upload-client'
 import { BrowserRouter } from 'react-router-dom'
 import { setContext } from '@apollo/client/link/context'
 import ModalLayer from './components/organisms/Modal/ModalLayer'
+import LayerContainer from './components/organisms/Layer/LayerContainer'
 
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
@@ -35,6 +36,7 @@ ReactDOM.render(
             <ApolloProvider client={client}>
                 <App />
                 <ModalLayer />
+                <LayerContainer />
             </ApolloProvider>
         </BrowserRouter>
     </React.StrictMode>,
