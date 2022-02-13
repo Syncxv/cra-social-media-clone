@@ -1,6 +1,8 @@
+import { Image } from 'phosphor-react'
 import React, { useState } from 'react'
 import { deafultPfp, UserType } from '../../../../../types'
 import { Input } from '../../../../pages/Auth/Login'
+import { ActionButton } from '../../Actions'
 
 import RP from './ReplyPost.module.scss'
 
@@ -25,16 +27,24 @@ const ReplyPost: React.FC<Props> = ({ user }) => {
                             type="text"
                             placeholder="Type something :|"
                         />
-                        <div className={RP.replyActions}>
-                            {focused ? <div>hi</div> : <div> </div>}
-                            <button
-                                style={{ alignSelf: focused ? 'flex-end' : 'center' }}
-                                className={RP.replyButton}
-                            >
-                                Reply
-                            </button>
-                        </div>
                     </div>
+                </div>
+                <div className={RP.replyActions}>
+                    {focused ? (
+                        <ActionButton
+                            color="rgb(35, 19, 255)"
+                            active={false}
+                            onClick={() => console.log('hi')}
+                            Icon={Image}
+                            size={24}
+                            fill={true}
+                        />
+                    ) : (
+                        <div> </div>
+                    )}
+                    <button style={{ alignSelf: focused ? 'flex-end' : 'center' }} className={RP.replyButton}>
+                        Reply
+                    </button>
                 </div>
             </div>
         </>

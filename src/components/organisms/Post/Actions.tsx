@@ -30,11 +30,17 @@ export const ActionButton: React.FC<{
     color: string
     onClick: any
     active: boolean
-}> = memo(({ Icon, amount, color, onClick, active }) => {
+    size?: number
+    fill?: boolean
+}> = memo(({ Icon, amount, color, onClick, active, fill, size = 16 }) => {
     return (
         <div onClick={onClick} style={{ '--color': color } as CSSProperties} className={PST.actionButton}>
             <div className={PST.icon}>
-                {active ? <Icon color={color} weight="fill" size={16} /> : <Icon size={16} />}
+                {active ? (
+                    <Icon color={color} weight="fill" size={size} />
+                ) : (
+                    <Icon {...{ color: fill ? color : null }} size={size} />
+                )}
             </div>
             {amount && <div className={PST.amount}>{amount}</div>}
         </div>
