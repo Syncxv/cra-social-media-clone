@@ -1,11 +1,13 @@
 import { gql, useApolloClient } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { userStore } from '../../../../stores/userStore'
 import { deafultPfp, PostType } from '../../../../types'
 import Divider from '../../../atoms/Divider'
 import { GET_POSTS_QUERY } from '../../../pages/MainFeed'
 import Actions from '../Actions'
 import { Comment } from '../Comment'
+import ReplyPost from './components/ReplyPost'
 import PI from './PostInfo.module.scss'
 
 interface Props {}
@@ -89,6 +91,7 @@ export const useGetPostData = (id: string): getPostDataReturnType => {
 const PostInfo: React.FC<Props> = ({}) => {
     const { id } = useParams<{ id: string }>()
     const { data: currentPost, loading } = useGetPostData(id!)
+    const currentUser = userStore(state => state.user)
     if (loading) return <div>loading</div>
     if (!currentPost) return <div>WHICH POST IS THAT EH</div>
     return (
@@ -116,8 +119,9 @@ const PostInfo: React.FC<Props> = ({}) => {
                 <Actions moreInfo={true} post={currentPost} />
                 <Divider margin={0.5} />
             </div>
-            {currentPost.comments.length &&
+            {Boolean(currentPost.comments.length) &&
                 currentPost.comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+            <ReplyPost user={currentUser!} />
             <Divider hidden={true} marginBottom={10} />
         </>
     )
