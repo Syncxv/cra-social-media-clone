@@ -21,11 +21,15 @@ export const GET_POST_QUERY = gql`
             attachment
             likes
             likedUsers
+            createdAt
+            updatedAt
             owner {
                 _id
                 username
                 avatar
                 isStaff
+                createdAt
+                updatedAt
             }
             comments {
                 _id
@@ -36,7 +40,11 @@ export const GET_POST_QUERY = gql`
                     username
                     avatar
                     isStaff
+                    createdAt
+                    updatedAt
                 }
+                createdAt
+                updatedAt
             }
         }
     }
