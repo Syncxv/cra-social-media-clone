@@ -12,6 +12,7 @@ import {
     User
 } from 'phosphor-react'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { layerStore } from '../../../stores/layerStore'
 import { userStore } from '../../../stores/userStore'
 import Divider from '../../atoms/Divider'
@@ -25,6 +26,7 @@ import SidebarHeader from './SidebarHeader'
 interface Props {}
 
 const Sidebar: React.FC<Props> = () => {
+    const navigator = useNavigate()
     const user = userStore(state => state.user)!
     const store = layerStore(state => state)
     return (
@@ -33,7 +35,13 @@ const Sidebar: React.FC<Props> = () => {
                 <div>
                     <SidebarHeader user={user} />
                     <div className={SidebarStyles.sidebarConents}>
-                        <SideButton Icon={House} title="Home" letter="H" dropdown={false} />
+                        <SideButton
+                            Icon={House}
+                            title="Home"
+                            letter="H"
+                            dropdown={false}
+                            onClick={() => navigator('/')}
+                        />
                         <SideButton Icon={Notification} title="Notifacations" letter="N" dropdown={false} />
                         <Divider margin={1} />
                         <SideButton Icon={Chats} title="Messages" dropdown={true} />

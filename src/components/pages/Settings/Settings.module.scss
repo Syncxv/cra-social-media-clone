@@ -1,0 +1,15 @@
+.settings {
+    display: grid;
+    //IS THIS ALLOWED? IS THIS GONNA CAUSE ISSUES LATER?
+    grid-template-columns: 0.5fr 1fr;
+    justify-content: center;
+    min-height: 100vh;
+    .side {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        position: sticky;
+        inset: 0;
+        padding: 0.5rem;
+    }
+}

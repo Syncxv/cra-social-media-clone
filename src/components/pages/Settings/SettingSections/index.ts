@@ -1,4 +1,3 @@
-import { AccountSettings } from './AccountSettings'
-export default {
-    AccountSettings
-}
+import UserSettings from './AccountSettings'
+import OtherSettings from './OtherSettings'
+export default [UserSettings, OtherSettings]

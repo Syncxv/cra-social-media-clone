@@ -28,7 +28,8 @@ const uploadLink = createUploadLink({
 export const client = new ApolloClient({
     link: ApolloLink.from([authLink, uploadLink]),
     uri: 'http://localhost:8000/graphql',
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    connectToDevTools: true
 })
 ReactDOM.render(
     <React.StrictMode>
