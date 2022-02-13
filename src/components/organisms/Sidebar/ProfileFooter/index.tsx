@@ -20,7 +20,7 @@ const ProfileFooter: React.FC<Props> = ({ user }) => {
                         <img className={PF.pfp} src={user.avatar || deafultPfp} />
                     </div>
                     <div className={PF.text}>
-                        <h2 className={PF.heading2}>{user.username}</h2>
+                        <h2 className={PF.heading2}>{user.displayName}</h2>
                         <p className={PF.smolText}>@{user.username}</p>
                     </div>
                 </div>

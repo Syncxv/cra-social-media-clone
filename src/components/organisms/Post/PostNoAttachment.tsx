@@ -20,7 +20,7 @@ const PostNoAttachment: React.FC<Props> = ({ post }) => {
                 </div>
                 <div className={PST.content}>
                     <div className={PST.owner}>
-                        <h4>{post.owner.username}</h4>
+                        <h4>{post.owner.displayName}</h4>
                         <span>@{post.owner.username}</span>
                     </div>
                     <div>{post.content}</div>

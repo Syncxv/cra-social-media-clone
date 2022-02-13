@@ -22,8 +22,7 @@ const PostV2: React.FC<Props> = ({ post }) => {
                 </div>
                 <div className={PST.content}>
                     <div className={PST.owner}>
-                        {/*TODO: ok ima add display name to the backend AND THEN change below to owner.displayName hehe but not rn */}
-                        <h4>{post.owner.username}</h4>
+                        <h4>{post.owner.displayName}</h4>
                         <span>@{post.owner.username}</span>
                     </div>
                     <div>{post.content}</div>
